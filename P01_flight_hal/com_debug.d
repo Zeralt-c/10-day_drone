@@ -27,6 +27,8 @@ p01_flight_hal\com_debug.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_co
 p01_flight_hal\com_debug.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 p01_flight_hal\com_debug.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 p01_flight_hal\com_debug.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+p01_flight_hal\com_debug.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
+p01_flight_hal\com_debug.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 p01_flight_hal\com_debug.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
 p01_flight_hal\com_debug.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
 p01_flight_hal\com_debug.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\stdarg.h

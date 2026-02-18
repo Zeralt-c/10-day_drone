@@ -13,11 +13,12 @@
                 "d:\\Project SWs\\Keil5\\Projects\\P01_flight_hal\\MDK-ARM\\FreeRTOS\\include",
                 "d:\\Project SWs\\Keil5\\Projects\\P01_flight_hal\\MDK-ARM\\FreeRTOS\\portable",
                 "d:\\Project SWs\\Keil5\\Projects\\P01_flight_hal\\MDK-ARM\\Application",
+                "d:\\Project SWs\\Keil5\\Projects\\P01_flight_hal\\MDK-ARM\\interface_HW",
                 "D:\\Project SWs\\Keil5\\ARM\\ARMCC\\include",
                 "D:\\Project SWs\\Keil5\\ARM\\ARMCC\\include\\rw",
                 "d:\\Project SWs\\Keil5\\Projects\\P01_flight_hal\\MDK-ARM",
-                "d:\\Project SWs\\Keil5\\Projects\\P01_flight_hal\\Core\\Src",
-                "d:\\Project SWs\\Keil5\\Projects\\P01_flight_hal\\Drivers\\STM32F1xx_HAL_Driver\\Src"
+                "d:\\Project SWs\\Keil5\\Projects\\P01_flight_hal\\Drivers\\STM32F1xx_HAL_Driver\\Src",
+                "d:\\Project SWs\\Keil5\\Projects\\P01_flight_hal\\Core\\Src"
             ],
             "defines": [
                 "USE_HAL_DRIVER",

@@ -25,10 +25,25 @@ p01_flight_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.
 p01_flight_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 p01_flight_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 p01_flight_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+p01_flight_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
+p01_flight_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 p01_flight_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
+p01_flight_hal\main.o: ../Core/Inc/tim.h
 p01_flight_hal\main.o: ../Core/Inc/usart.h
 p01_flight_hal\main.o: ../Core/Inc/gpio.h
 p01_flight_hal\main.o: ./common/Com_debug.h
 p01_flight_hal\main.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
 p01_flight_hal\main.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\stdarg.h
 p01_flight_hal\main.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\string.h
+p01_flight_hal\main.o: ./Application/APP_FreeRTOS.h
+p01_flight_hal\main.o: ./FreeRTOS/include/FreeRTOS.h
+p01_flight_hal\main.o: ./FreeRTOS/FreeRTOSConfig.h
+p01_flight_hal\main.o: ./FreeRTOS/include/projdefs.h
+p01_flight_hal\main.o: ./FreeRTOS/include/portable.h
+p01_flight_hal\main.o: ./FreeRTOS/include/deprecated_definitions.h
+p01_flight_hal\main.o: ./FreeRTOS/portable/portmacro.h
+p01_flight_hal\main.o: ./FreeRTOS/include/mpu_wrappers.h
+p01_flight_hal\main.o: ./FreeRTOS/include/task.h
+p01_flight_hal\main.o: ./FreeRTOS/include/list.h
+p01_flight_hal\main.o: ./interface_HW/Int_motor.h
+p01_flight_hal\main.o: ./interface_HW/Int_motor.h
