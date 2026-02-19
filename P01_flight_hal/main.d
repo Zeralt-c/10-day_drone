@@ -37,7 +37,6 @@ p01_flight_hal\main.o: ./common/Com_debug.h
 p01_flight_hal\main.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
 p01_flight_hal\main.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\stdarg.h
 p01_flight_hal\main.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\string.h
-p01_flight_hal\main.o: ./interface_HW/Int_SI24R1.h
 p01_flight_hal\main.o: ./Application/APP_FreeRTOS.h
 p01_flight_hal\main.o: ./FreeRTOS/include/FreeRTOS.h
 p01_flight_hal\main.o: ./FreeRTOS/FreeRTOSConfig.h
@@ -50,4 +49,5 @@ p01_flight_hal\main.o: ./FreeRTOS/include/task.h
 p01_flight_hal\main.o: ./FreeRTOS/include/list.h
 p01_flight_hal\main.o: ./interface_HW/Int_motor.h
 p01_flight_hal\main.o: ./interface_HW/Int_led.h
+p01_flight_hal\main.o: ./interface_HW/Int_SI24R1.h
 p01_flight_hal\main.o: ./common/Com_config.h

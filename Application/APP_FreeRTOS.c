@@ -1,5 +1,9 @@
 #include "APP_FreeRTOS.h"
 
+uint8_t comm_test = 1; //通信测试用数据变量
+//测试用数据缓冲区
+uint8_t test_buffer[TX_PLOAD_WIDTH] = {0};
+
 /**
  * STM32F103C8T6 => SRAM 20k, 
  * 操作系统使用configTOTAL_HEAP_SIZE = 17k，
@@ -47,7 +51,15 @@ void led_task( void *args );
 #define LED_TASK_PRIORITY 1
 TaskHandle_t led_task_handle;
 #define LED_TASK_PERIOD_MS 100  //定义任务周期，单位为ms
-//
+
+//通信任务，负责与遥控器通信，更新连接状态等
+void communication_task( void *args );
+#define COMMUNICATION_TASK_STACK_SIZE 128
+#define COMMUNICATION_TASK_PRIORITY 2
+TaskHandle_t communication_task_handle;
+#define COMMUNICATION_TASK_PERIOD_MS 6  //定义任务周期，单位为ms
+
+//FreeRTOS启动函数，负责创建任务并启动调度器
  void APP_FreeRTOS_Start(void){
     //在这里创建任务、队列、信号量等FreeRTOS对象
     //电源管理任务，优先级较高，确保及时响应电源事件
@@ -78,9 +90,19 @@ TaskHandle_t led_task_handle;
         LED_TASK_PRIORITY,           // 任务优先级
         &led_task_handle         // 任务句柄
     );
+    //创建通信任务，优先级适中，确保及时更新连接状态但不干扰飞行控制
+    xTaskCreate(
+        communication_task,       // 任务函数
+        "CommunicationTask", // 任务名称
+        COMMUNICATION_TASK_STACK_SIZE,         // 堆栈大小
+        NULL,        // 任务参数
+        COMMUNICATION_TASK_PRIORITY,           // 任务优先级
+        &communication_task_handle         // 任务句柄
+    );
     //启动调度器，开始执行任务
     vTaskStartScheduler();
 }
+
 void power_task( void *args ){
     //获取当前基准时间
     TickType_t current_tick = xTaskGetTickCount();
@@ -96,7 +118,15 @@ void power_task( void *args ){
         vTaskDelay(pdMS_TO_TICKS(100)); // 延时100ms，确保满足启动条件
         //之后可以根据需要继续保持低电平，或者设置为高电平
         HAL_GPIO_WritePin(POWER_KEY_GPIO_Port, POWER_KEY_Pin, GPIO_PIN_SET);
-        
+
+        //通信测试，实际使用中可以删除
+        if(comm_test == 0) {
+            LOG_DEBUG("communication test success\n");
+        //打印接收的数据，实际使用中可以删除
+        LOG_DEBUG("received data: %s\n", test_buffer);
+        } else {
+            LOG_DEBUG("communication test failed\n");
+        }
     }
 }
 
@@ -194,5 +224,24 @@ void led_task( void *args ){
 }
 
 
+void communication_task( void *args ){
+    //获取当前基准时间
+    TickType_t current_tick = xTaskGetTickCount();
+    while(1){
+        //接收数据到缓冲区，并判断连接状态
+        uint8_t rx_status = SI24R1_RxPacket(test_buffer);
+        comm_test = rx_status;
+        if(rx_status == 0) {
+            //表示接收到数据包，遥控器连接正常            
+            remote_state = REMOTE_CONNECTED;
+        } else {
+            //其他情况表示遥控器未连接
+            remote_state = REMOTE_DISCONNECTED;
+        }
+        //每6ms执行一次通信任务，确保及时更新连接状态但不干扰飞行控制
+        vTaskDelayUntil(&current_tick, pdMS_TO_TICKS(COMMUNICATION_TASK_PERIOD_MS));
+        //在这里执行与遥控器的通信，更新remote_state等状态变量
+    }
+}
 
 
