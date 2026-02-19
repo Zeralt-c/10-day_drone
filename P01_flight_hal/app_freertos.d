@@ -37,6 +37,7 @@ p01_flight_hal\app_freertos.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal
 p01_flight_hal\app_freertos.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 p01_flight_hal\app_freertos.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 p01_flight_hal\app_freertos.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+p01_flight_hal\app_freertos.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
 p01_flight_hal\app_freertos.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 p01_flight_hal\app_freertos.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 p01_flight_hal\app_freertos.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
@@ -44,5 +45,9 @@ p01_flight_hal\app_freertos.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\std
 p01_flight_hal\app_freertos.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\stdarg.h
 p01_flight_hal\app_freertos.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\string.h
 p01_flight_hal\app_freertos.o: ./interface_HW/Int_motor.h
-p01_flight_hal\app_freertos.o: ./interface_HW/Int_motor.h
 p01_flight_hal\app_freertos.o: ../Core/Inc/tim.h
+p01_flight_hal\app_freertos.o: ./interface_HW/Int_led.h
+p01_flight_hal\app_freertos.o: ../Core/Inc/gpio.h
+p01_flight_hal\app_freertos.o: ./interface_HW/Int_SI24R1.h
+p01_flight_hal\app_freertos.o: ../Core/Inc/spi.h
+p01_flight_hal\app_freertos.o: ./common/Com_config.h

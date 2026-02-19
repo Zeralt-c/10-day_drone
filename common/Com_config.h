@@ -16,7 +16,7 @@ typedef enum {
     IDLE = 0,
     NORMAL,
     FIXED_HEIGHT,
-    ERROR,
+    FLIGHT_ERROR,
 } Flight_State;
 
 #endif // COM_CONFIG_H

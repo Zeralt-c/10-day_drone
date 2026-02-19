@@ -166,7 +166,7 @@ void led_task( void *args ){
                     LED_Toggle(&led_right_bottom);
                 }
                 break;
-            case ERROR:
+            case FLIGHT_ERROR:
                 //错误状态，所有LED快闪烁，200ms亮200ms灭
                 blink_counter++;
                 //设置初始状态
@@ -187,7 +187,7 @@ void led_task( void *args ){
             default:
                 break;
         }
-        blink_counter%=10; //防止计数器溢出，保持在0-9范围内
+        blink_counter %= 10; //防止计数器溢出，保持在0-9范围内
         //每100ms执行一次LED控制任务，确保LED状态的及时更新
         vTaskDelayUntil(&current_tick, pdMS_TO_TICKS(LED_TASK_PERIOD_MS));
     }
