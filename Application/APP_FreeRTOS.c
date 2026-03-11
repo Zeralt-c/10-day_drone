@@ -1,8 +1,7 @@
 #include "APP_FreeRTOS.h"
 
-uint8_t comm_test = 1; //通信测试用数据变量
-//测试用数据缓冲区
-uint8_t test_buffer[TX_PLOAD_WIDTH] = {0};
+
+
 
 /**
  * STM32F103C8T6 => SRAM 20k, 
@@ -35,9 +34,13 @@ void flight_task( void *args );
 TaskHandle_t flight_task_handle;
 #define FLIGHT_TASK_PERIOD_MS 6  //定义任务周期，单位为ms
 
-//连接状态
+/**
+ * 遥控连接状态
+ *  REMOTE_CONNECTED = 0,
+    REMOTE_DISCONNECTED = 1,
+*/
 Remote_State remote_state = REMOTE_DISCONNECTED; //初始状态为遥控器未连接
-
+extern Remote_Data remote_data;
 //飞行状态
 Flight_State flight_state = IDLE; //初始状态为IDLE
 
@@ -110,22 +113,18 @@ void power_task( void *args ){
         /**每10s执行一次维持电源启动任务，
          * 为了防止机械启动干扰任务，先延时10s，确保机械启动完成后再执行电源维持操作
          */
-        vTaskDelayUntil(&current_tick, pdMS_TO_TICKS(POWER_TASK_PERIOD_MS));
+        //vTaskDelayUntil(&current_tick, pdMS_TO_TICKS(POWER_TASK_PERIOD_MS));
 
-        //启动电源
-        HAL_GPIO_WritePin(POWER_KEY_GPIO_Port, POWER_KEY_Pin, GPIO_PIN_RESET);
-        //根据IP5305T的规格书，保持POWER_KEY引脚低电平至少100ms可以启动电源
-        vTaskDelay(pdMS_TO_TICKS(100)); // 延时100ms，确保满足启动条件
-        //之后可以根据需要继续保持低电平，或者设置为高电平
-        HAL_GPIO_WritePin(POWER_KEY_GPIO_Port, POWER_KEY_Pin, GPIO_PIN_SET);
-
+        //IP5305_Power_On();
         //通信测试，实际使用中可以删除
-        if(comm_test == 0) {
-            LOG_DEBUG("communication test success\n");
-        //打印接收的数据，实际使用中可以删除
-        LOG_DEBUG("received data: %s\n", test_buffer);
-        } else {
-            LOG_DEBUG("communication test failed\n");
+
+        //接到通知res = 1，超时res = 0
+        uint32_t res = ulTaskNotifyTake(pdTRUE, pdMS_TO_TICKS(POWER_TASK_PERIOD_MS));
+        if(res != 0){
+            IP5305_Power_Off();
+        }
+        else{
+            IP5305_Power_On();
         }
     }
 }
@@ -150,11 +149,11 @@ void led_task( void *args ){
     uint32_t blink_counter = 0;
     while(1){
         //1.判断连接状态，以前两个LED指示连接状态
-        if(remote_state == REMOTE_DISCONNECTED) {
+        if(remote_state == REMOTE_DISCONNECTED && flight_state != FLIGHT_ERROR) {
             //遥控器未连接，前两个熄灭
             LED_Off(&led_left_top);
             LED_Off(&led_right_top);
-        } else if(remote_state == REMOTE_CONNECTED) {
+        } else if(remote_state == REMOTE_CONNECTED && flight_state != FLIGHT_ERROR) {
             //遥控器已连接，前两个点亮
             LED_On(&led_left_top);
             LED_On(&led_right_top);
@@ -164,7 +163,6 @@ void led_task( void *args ){
         switch(flight_state) {
             case IDLE:
                 //空闲状态，后两个LED交替闪烁，500ms亮500ms灭
-                blink_counter++;
                 //设置初始状态为左侧LED亮，右侧LED灭
                 if(blink_counter == 0) {
                     LED_On(&led_left_bottom);
@@ -175,6 +173,7 @@ void led_task( void *args ){
                     LED_Toggle(&led_left_bottom);
                     LED_Toggle(&led_right_bottom);
                 }
+                blink_counter++;
                 break;
             case NORMAL:
                 //正常飞行状态，后两个LED点亮
@@ -184,7 +183,6 @@ void led_task( void *args ){
                 break;
             case FIXED_HEIGHT:
                 //定高飞行状态，后两个LED慢闪烁，500ms亮500ms灭
-                blink_counter++;
                 //设置初始状态
                 if(blink_counter == 0) {
                     LED_On(&led_left_bottom);
@@ -195,10 +193,10 @@ void led_task( void *args ){
                     LED_Toggle(&led_left_bottom);
                     LED_Toggle(&led_right_bottom);
                 }
+                blink_counter++;
                 break;
             case FLIGHT_ERROR:
                 //错误状态，所有LED快闪烁，200ms亮200ms灭
-                blink_counter++;
                 //设置初始状态
                 if(blink_counter == 0) {
                     LED_On(&led_left_top);
@@ -213,6 +211,7 @@ void led_task( void *args ){
                     LED_Toggle(&led_left_bottom);
                     LED_Toggle(&led_right_bottom);
                 }
+                blink_counter++;
                 break;
             default:
                 break;
@@ -228,16 +227,22 @@ void communication_task( void *args ){
     //获取当前基准时间
     TickType_t current_tick = xTaskGetTickCount();
     while(1){
-        //接收数据到缓冲区，并判断连接状态
-        uint8_t rx_status = SI24R1_RxPacket(test_buffer);
-        comm_test = rx_status;
-        if(rx_status == 0) {
-            //表示接收到数据包，遥控器连接正常            
-            remote_state = REMOTE_CONNECTED;
-        } else {
-            //其他情况表示遥控器未连接
-            remote_state = REMOTE_DISCONNECTED;
+        //接收数据到缓冲区
+        uint8_t res = App_receive_data();
+
+        //判断连接状态
+        App_process_connect_state(res);
+
+        //关机命令，关机命令应在电源任务中执行，使用freertos直接任务通知
+        
+        if(remote_data.shutdown == 1){
+            //关机
+            xTaskNotifyGive(power_task_handle);
         }
+
+        //处理飞行状态
+        App_process_flight_state();
+
         //每6ms执行一次通信任务，确保及时更新连接状态但不干扰飞行控制
         vTaskDelayUntil(&current_tick, pdMS_TO_TICKS(COMMUNICATION_TASK_PERIOD_MS));
         //在这里执行与遥控器的通信，更新remote_state等状态变量

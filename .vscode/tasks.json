@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Flash (STM32CubeProgrammer)",
+      "type": "shell",
+      "command": "\"D:\\Project SWs\\CubeProg\\bin\\STM32_Programmer_CLI.exe\"",
+      "args": [
+        "-c",
+        "port=SWD",
+        "freq=2000",
+        "-w",
+        "${workspaceFolder}/P01_flight_hal/P01_flight_hal.hex",
+        "-v"
+      ],
+      "group": "build",
+      "presentation": { "reveal": "always", "panel": "shared" },
+      "problemMatcher": []
+    }
+  ]
+}

@@ -2,6 +2,8 @@
 #define __nRF24L01P__
 
 #include "spi.h"
+#include "freertos.h"
+#include "task.h"
 
 //SI24R1引脚配置，需要CUBEMX中配置SPI
 //拉低片选
@@ -15,7 +17,7 @@
 //
 #define RF_CHANNEL     0x40             // 射频通道
 #define TX_ADR_WIDTH   5  				// 5字节宽度发送/接受地址
-#define TX_PLOAD_WIDTH 32  				// 数据通道有效数据宽度
+#define TX_PLOAD_WIDTH 18  				// 数据通道有效数据宽度，数据包17字节
 
 //********************************************************************************************************************//
 // SPI(SI24R1) commands

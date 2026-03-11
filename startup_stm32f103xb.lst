@@ -460,12 +460,12 @@ ARM Macro Assembler    Page 8
 
 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
-ork --depend=p01_flight_hal\startup_stm32f103xb.d -op01_flight_hal\startup_stm3
-2f103xb.o -I.\RTE\_P01_flight_hal -I"D:\Project SWs\Keil5\ARM\PACK\ARM\CMSIS\5.
-0.1\CMSIS\Include" -I"D:\Project SWs\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\De
-vice\Include" --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SE
-TA 524" --predefine="_RTE_ SETA 1" --predefine="STM32F10X_MD SETA 1" --list=sta
-rtup_stm32f103xb.lst startup_stm32f103xb.s
+ork --depend=.\p01_flight_hal\startup_stm32f103xb.d -o.\p01_flight_hal\startup_
+stm32f103xb.o -I.\RTE\_P01_flight_hal -I"D:\Project SWs\Keil5\ARM\PACK\ARM\CMSI
+S\5.9.0\CMSIS\Core\Include" -I"D:\Project SWs\Keil5\ARM\PACK\Keil\STM32F1xx_DFP
+\2.2.0\Device\Include" --predefine="__MICROLIB SETA 1" --predefine="__UVISION_V
+ERSION SETA 538" --predefine="_RTE_ SETA 1" --predefine="STM32F10X_MD SETA 1" -
+-predefine="_RTE_ SETA 1" --list=startup_stm32f103xb.lst startup_stm32f103xb.s
 
 
 

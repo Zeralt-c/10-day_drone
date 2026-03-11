@@ -42,13 +42,13 @@ void SI24R1_Init(void)
 	HAL_Delay(200);
 	//测试直到SPI通信正常，如果通信异常则每50ms重试一次，直到通信正常
 	while(SI24R1_Test_Error()!= 0) {
-		LOG_DEBUG("SI24R1 communication error, retrying...\n");
+		LOG_DEBUG("MCU-SI24R1 communication error, retrying...\n");
 		HAL_Delay(50);
 	}
 
 	//默认接收模式，发送时切换到发送模式，发送完成后切换回接收模式
 	SI24R1_RX_Mode();
-	LOG_DEBUG("SI24R1 communication success\n");
+	LOG_DEBUG("MCU-SI24R1 communication success\n");
 }
 
 /********************************************************
@@ -194,6 +194,7 @@ uint8_t SI24R1_RxPacket(uint8_t *rxbuf)
 /********************************************************
 函数功能：	发送一个数据包                      
 入口参数：	txbuf:要发送的数据
+注意：		使用vTaskDelay，必须在FreeRTOS中使用
 返回值：	0x10:达到最大重发次数，发送失败 
           	0x20:发送成功            
           	0xff:发送失败                  
@@ -210,7 +211,8 @@ uint8_t SI24R1_TxPacket(uint8_t *txbuf)
 	state = SI24R1_Read_Reg(STATUS);  									//读取状态寄存器的值	   
 	while((state & TX_DS) == 0 && (state & MAX_RT) == 0)					//等待发送完成或达到最大重发次数
 	{
-		state = SI24R1_Read_Reg(STATUS);  									//读取状态寄存器的值
+		state = SI24R1_Read_Reg(SI24R1_READ_REG + STATUS);  									//读取状态寄存器的值
+		vTaskDelay(1); //等待1ms，避免过于频繁地占用CPU资源
 	}
 	SI24R1_Write_Reg(SI24R1_WRITE_REG+STATUS, state); 					//清除TX_DS或MAX_RT中断标志
 	if(state&MAX_RT)													//达到最大重发次数
