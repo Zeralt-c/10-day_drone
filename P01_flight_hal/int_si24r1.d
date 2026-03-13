@@ -9,14 +9,14 @@
 .\p01_flight_hal\int_si24r1.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 .\p01_flight_hal\int_si24r1.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h
 .\p01_flight_hal\int_si24r1.o: ../Drivers/CMSIS/Include/core_cm3.h
-.\p01_flight_hal\int_si24r1.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\p01_flight_hal\int_si24r1.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\p01_flight_hal\int_si24r1.o: ../Drivers/CMSIS/Include/cmsis_version.h
 .\p01_flight_hal\int_si24r1.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 .\p01_flight_hal\int_si24r1.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 .\p01_flight_hal\int_si24r1.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h
 .\p01_flight_hal\int_si24r1.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
 .\p01_flight_hal\int_si24r1.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-.\p01_flight_hal\int_si24r1.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
+.\p01_flight_hal\int_si24r1.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\p01_flight_hal\int_si24r1.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h
 .\p01_flight_hal\int_si24r1.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h
 .\p01_flight_hal\int_si24r1.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h
@@ -42,6 +42,6 @@
 .\p01_flight_hal\int_si24r1.o: ./FreeRTOS/include/list.h
 .\p01_flight_hal\int_si24r1.o: ./common/Com_debug.h
 .\p01_flight_hal\int_si24r1.o: ../Core/Inc/usart.h
-.\p01_flight_hal\int_si24r1.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
-.\p01_flight_hal\int_si24r1.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\stdarg.h
-.\p01_flight_hal\int_si24r1.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\string.h
+.\p01_flight_hal\int_si24r1.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\p01_flight_hal\int_si24r1.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\p01_flight_hal\int_si24r1.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

@@ -177,6 +177,8 @@ void App_process_flight_state(void)
         case IDLE:
             if(App_process_unlock_flight() == 0){
                 flight_state = NORMAL;
+                //转换完成后需要清零
+                thr_state = FREE;
             }
             break;
         case NORMAL:

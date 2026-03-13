@@ -2,8 +2,8 @@
 .\p01_flight_hal\app_receive_data.o: Application\App_receive_data.h
 .\p01_flight_hal\app_receive_data.o: Application\APP_FreeRTOS.h
 .\p01_flight_hal\app_receive_data.o: ./FreeRTOS/include/FreeRTOS.h
-.\p01_flight_hal\app_receive_data.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
-.\p01_flight_hal\app_receive_data.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\p01_flight_hal\app_receive_data.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\p01_flight_hal\app_receive_data.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\p01_flight_hal\app_receive_data.o: ./FreeRTOS/FreeRTOSConfig.h
 .\p01_flight_hal\app_receive_data.o: ./FreeRTOS/include/projdefs.h
 .\p01_flight_hal\app_receive_data.o: ./FreeRTOS/include/portable.h
@@ -42,9 +42,9 @@
 .\p01_flight_hal\app_receive_data.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 .\p01_flight_hal\app_receive_data.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 .\p01_flight_hal\app_receive_data.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
-.\p01_flight_hal\app_receive_data.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
-.\p01_flight_hal\app_receive_data.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\stdarg.h
-.\p01_flight_hal\app_receive_data.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\string.h
+.\p01_flight_hal\app_receive_data.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\p01_flight_hal\app_receive_data.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\p01_flight_hal\app_receive_data.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\p01_flight_hal\app_receive_data.o: ./interface_HW/Int_motor.h
 .\p01_flight_hal\app_receive_data.o: ../Core/Inc/tim.h
 .\p01_flight_hal\app_receive_data.o: ./interface_HW/Int_led.h

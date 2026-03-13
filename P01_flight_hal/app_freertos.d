@@ -1,8 +1,8 @@
 .\p01_flight_hal\app_freertos.o: Application\APP_FreeRTOS.c
 .\p01_flight_hal\app_freertos.o: Application\APP_FreeRTOS.h
 .\p01_flight_hal\app_freertos.o: ./FreeRTOS/include/FreeRTOS.h
-.\p01_flight_hal\app_freertos.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
-.\p01_flight_hal\app_freertos.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\p01_flight_hal\app_freertos.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\p01_flight_hal\app_freertos.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\p01_flight_hal\app_freertos.o: ./FreeRTOS/FreeRTOSConfig.h
 .\p01_flight_hal\app_freertos.o: ./FreeRTOS/include/projdefs.h
 .\p01_flight_hal\app_freertos.o: ./FreeRTOS/include/portable.h
@@ -41,9 +41,9 @@
 .\p01_flight_hal\app_freertos.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 .\p01_flight_hal\app_freertos.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 .\p01_flight_hal\app_freertos.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
-.\p01_flight_hal\app_freertos.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
-.\p01_flight_hal\app_freertos.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\stdarg.h
-.\p01_flight_hal\app_freertos.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\string.h
+.\p01_flight_hal\app_freertos.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\p01_flight_hal\app_freertos.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\p01_flight_hal\app_freertos.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\p01_flight_hal\app_freertos.o: ./interface_HW/Int_motor.h
 .\p01_flight_hal\app_freertos.o: ../Core/Inc/tim.h
 .\p01_flight_hal\app_freertos.o: ./interface_HW/Int_led.h

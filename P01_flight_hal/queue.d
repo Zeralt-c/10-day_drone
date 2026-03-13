@@ -1,9 +1,9 @@
 .\p01_flight_hal\queue.o: FreeRTOS\queue.c
-.\p01_flight_hal\queue.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\p01_flight_hal\queue.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\string.h
+.\p01_flight_hal\queue.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\p01_flight_hal\queue.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\p01_flight_hal\queue.o: ./FreeRTOS/include/FreeRTOS.h
-.\p01_flight_hal\queue.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
-.\p01_flight_hal\queue.o: D:\Project SWs\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\p01_flight_hal\queue.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\p01_flight_hal\queue.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\p01_flight_hal\queue.o: ./FreeRTOS/FreeRTOSConfig.h
 .\p01_flight_hal\queue.o: ./FreeRTOS/include/projdefs.h
 .\p01_flight_hal\queue.o: ./FreeRTOS/include/portable.h
